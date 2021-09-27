@@ -209,3 +209,11 @@ Received Import Request.
 Start importing Assets/Assets/tiles_20.controller using Guid(2d70ee858d433aa408915c778f2602ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d9ce1d842ed92559be4ca06447439c0') in 0.003668 seconds 
   Import took 0.007538 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 109.165581 seconds.
+  path: Assets/Scripts
+  artifactKey: Guid(5bf903973077a438697dc882bd5356e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts using Guid(5bf903973077a438697dc882bd5356e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ca4b39ca67723cbc852d9fc7b3462fc') in 0.003319 seconds 
+  Import took 0.006539 seconds .
+
