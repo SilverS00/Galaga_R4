@@ -5,21 +5,22 @@ using UnityEngine;
 public class Nave : MonoBehaviour
 {
 
-
+    public GameObject bullet;
+    public Transform referencia;
     public float speed = 5;
     Vector3 movement = new Vector3(0, 0, 1f);
     private CharacterController characterController;
 
+    private IEnumerator corrutina;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        corrutina = CadenciaFire();
     }
 
     void Movement()
@@ -41,17 +42,35 @@ public class Nave : MonoBehaviour
             movement += new Vector3(-speed, 0, 0);
         }
     }
-    // Update is called once per frame
+   
     void Update()
     {
         movement = Vector3.zero;
         Movement();
         characterController.Move(movement * Time.deltaTime);
+        Disparar();
+        
+    }
 
+    void Disparar()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(corrutina);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            StopCoroutine(corrutina);
+        }
 
+    }
 
-
-
-        //transform.position += Vector3.right;
+    IEnumerator CadenciaFire()
+    {
+        while (true)
+        {
+            GameObject firedBullet = Instantiate(bullet, referencia.position, referencia.rotation);
+            yield return new WaitForSeconds(0.7f);
+        }
     }
 }
