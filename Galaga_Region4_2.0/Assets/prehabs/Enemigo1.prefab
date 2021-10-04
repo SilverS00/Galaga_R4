@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7408413953346870223}
   m_Layer: 0
   m_Name: Enemigo1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   Enemigo1: {fileID: 0}
   moveSpeed: 1
   changeDirection: 0
+  Bullet: {fileID: 3452454238768920532, guid: 4f75f8c1bdc17d44d8480828ff9912c8, type: 3}
 --- !u!1 &1809333683756815305
 GameObject:
   m_ObjectHideFlags: 0

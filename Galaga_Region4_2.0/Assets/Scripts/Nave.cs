@@ -21,6 +21,8 @@ public class Nave : MonoBehaviour
     void Start()
     {
         corrutina = CadenciaFire();
+        _audioSource = GetComponent<AudioSource>();
+
     }
 
     void Movement()
@@ -57,6 +59,7 @@ public class Nave : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(corrutina);
+            PlayAudio(0);
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -72,5 +75,18 @@ public class Nave : MonoBehaviour
             GameObject firedBullet = Instantiate(bullet, referencia.position, referencia.rotation);
             yield return new WaitForSeconds(0.7f);
         }
+
+        
     }
+
+    [SerializeField]
+    private AudioClip[] _audioClips;
+    private AudioSource _audioSource;
+    
+    void PlayAudio(int index)
+    {
+        _audioSource.clip = _audioClips[index];
+        _audioSource.Play();
+    }
+
 }
