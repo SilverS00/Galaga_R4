@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5727527889221105599}
   - component: {fileID: -3617392597815583272}
   - component: {fileID: 3208976704306308587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: BulletEnemigo
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.6
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ceb873c4e02b645938bd31650c0e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: 100

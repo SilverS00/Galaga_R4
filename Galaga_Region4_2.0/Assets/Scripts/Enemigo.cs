@@ -4,41 +4,38 @@ using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
-    public Rigidbody2D Enemigo1;
+    [SerializeField] Transform objetivo;
+    [SerializeField] Rigidbody2D Enemigo1;
 
     [SerializeField] float moveSpeed = 3;
 
     public GameObject Bullet;
+    private bool isShooting;
 
-    float fireRate;
-    float nextFire;
-    [SerializeField] Transform objetivo;
-
-    // Start is called before the first frame update
-    void Start()
+    void ShootAtPlayer()
     {
-        Enemigo1 = GetComponent<Rigidbody2D>();
-        fireRate = 1f;
-        nextFire = Time.time;
+        if (isShooting) return;
+        StartCoroutine(Disparo());
     }
-
-    // Update is called once per frame
     void Update()
     {
-        moveEnemigo1 ();
-        CheckIfTimetoFire();
+        moveEnemigo1();
+        ShootAtPlayer();
+        Vector2 direction = (objetivo.position - transform.position);
+        float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
     }
 
     public void moveEnemigo1()
     {
-            Enemigo1.velocity = new Vector2(0,-1) * moveSpeed * Time.deltaTime;
+            Enemigo1.velocity = new Vector2(-1,0) * moveSpeed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Bala"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         if(other.gameObject.CompareTag("Wall"))
         {
@@ -46,13 +43,16 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    void CheckIfTimetoFire()
+    IEnumerator Disparo()
     {
-        if(Time.time > nextFire)
-        {
-            transform.LookAt(objetivo.position);
-            Instantiate(Bullet, transform.position, Quaternion.identity);
-            nextFire = Time.time + fireRate;
-        }
+        if (isShooting) yield break;
+        isShooting = true;
+        Vector2 direction = (objetivo.position - transform.position);
+        GameObject c = Instantiate(Bullet, transform.position, Quaternion.identity);
+        c.GetComponent<BulletEnemy>().Shoot(direction);
+       yield return new WaitForSeconds(2);
+        isShooting = false;
     }
+            
+      
 }

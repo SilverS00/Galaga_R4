@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3243b3cdfe496954db18d5a7f5a1beaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemigo1: {fileID: 0}
+  objetivo: {fileID: 0}
+  Enemigo1: {fileID: 1809333683406088996}
   moveSpeed: 51.94
   Bullet: {fileID: 3452454238768920532, guid: 4f75f8c1bdc17d44d8480828ff9912c8, type: 3}
 --- !u!212 &1018946515309392314
