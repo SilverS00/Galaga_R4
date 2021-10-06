@@ -6,9 +6,7 @@ public class Enemigo : MonoBehaviour
 {
     public Rigidbody2D Enemigo1;
 
-    public float moveSpeed = 3;
-
-    public bool changeDirection = false;
+    [SerializeField] float moveSpeed = 3;
 
     public GameObject Bullet;
 
@@ -18,7 +16,7 @@ public class Enemigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Enemigo1 = this.gameObject.GetComponent<Rigidbody2D>();
+        Enemigo1 = GetComponent<Rigidbody2D>();
         fireRate = 1f;
         nextFire = Time.time;
     }
@@ -32,28 +30,7 @@ public class Enemigo : MonoBehaviour
 
     public void moveEnemigo1()
     {
-        if (changeDirection == true)
-        {
-            Enemigo1.velocity = new Vector2(1,0) * -1 * moveSpeed;
-        }
-
-        else if (changeDirection == false) 
-        {
-            Enemigo1.velocity = new Vector2 (1,0) * moveSpeed;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.name == "LeftWall")
-        {
-            changeDirection = false;
-        }
-
-        if (col.gameObject.name == "RightWall")
-        {
-            changeDirection = true;
-        }
+            Enemigo1.velocity = new Vector2(0,-1) * moveSpeed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other)

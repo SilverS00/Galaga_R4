@@ -90,4 +90,8 @@ public class Nave : MonoBehaviour
         _audioSource.Play();
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        print("Hit");
+    }
 }

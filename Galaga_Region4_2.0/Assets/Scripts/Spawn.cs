@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-
+    [SerializeField] Transform referenceSpawn;
+    [SerializeField] Transform referenceSpawn2;
+    [SerializeField] Transform referenceSpawn3;
     public GameObject enemy;
     // Start is called before the first frame update
     void Start()
@@ -16,8 +18,9 @@ public class Spawn : MonoBehaviour
     {
         while (true)
         {
-            Vector3 enemyspawn = new Vector3(-1, 1.5f, 0);
-            Instantiate(enemy, enemyspawn, Quaternion.identity);
+            Instantiate(enemy, referenceSpawn.position, Quaternion.identity);
+            Instantiate(enemy, referenceSpawn2.position, Quaternion.identity);
+            Instantiate(enemy, referenceSpawn3.position, Quaternion.identity);
             yield return new WaitForSeconds(3);
         }
     }

@@ -66,7 +66,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -95,8 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemigo1: {fileID: 0}
-  moveSpeed: 1
-  changeDirection: 0
+  moveSpeed: 51.94
   Bullet: {fileID: 3452454238768920532, guid: 4f75f8c1bdc17d44d8480828ff9912c8, type: 3}
 --- !u!212 &1018946515309392314
 SpriteRenderer:

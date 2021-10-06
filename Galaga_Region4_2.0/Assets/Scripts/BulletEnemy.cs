@@ -11,7 +11,6 @@ public class BulletEnemy : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        //rb2d.AddForce(transform.down * force, ForceMode2D.Impulse);
         Destroy(gameObject, 2);
     }
   void OnCollisionEnter(Collision c)
