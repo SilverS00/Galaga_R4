@@ -12,6 +12,7 @@ public class Enemigo : MonoBehaviour
 
     float fireRate;
     float nextFire;
+    [SerializeField] Transform objetivo;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class Enemigo : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Wall"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -49,6 +50,7 @@ public class Enemigo : MonoBehaviour
     {
         if(Time.time > nextFire)
         {
+            transform.LookAt(objetivo.position);
             Instantiate(Bullet, transform.position, Quaternion.identity);
             nextFire = Time.time + fireRate;
         }

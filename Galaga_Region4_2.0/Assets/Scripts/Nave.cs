@@ -9,13 +9,15 @@ public class Nave : MonoBehaviour
     public Transform referencia;
     public float speed = 5;
     Vector3 movement = new Vector3(0, 0, 1f);
-    private CharacterController characterController;
+    //private CharacterController characterController;
+    [SerializeField] private Rigidbody2D rigidBody;
 
     private IEnumerator corrutina;
 
     void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
+
     }
 
     void Start()
@@ -44,14 +46,20 @@ public class Nave : MonoBehaviour
             movement += new Vector3(-speed, 0, 0);
         }
     }
-   
+
     void Update()
     {
         movement = Vector3.zero;
         Movement();
-        characterController.Move(movement * Time.deltaTime);
+        //characterController.Move(movement * Time.deltaTime);
+
         Disparar();
-        
+
+    }
+
+    private void FixedUpdate()
+    {
+        rigidBody.velocity = movement * Time.deltaTime;
     }
 
     void Disparar()
@@ -77,21 +85,16 @@ public class Nave : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
         }
 
-        
+
     }
 
     [SerializeField]
     private AudioClip[] _audioClips;
     private AudioSource _audioSource;
-    
+
     void PlayAudio(int index)
     {
         _audioSource.clip = _audioClips[index];
         _audioSource.Play();
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        print("Hit");
     }
 }

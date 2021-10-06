@@ -13,11 +13,11 @@ public class BulletEnemy : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 2);
     }
-  void OnCollisionEnter(Collision c)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(c.gameObject.CompareTag("Player") || c.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
         {
-            Destroy(c.gameObject);
+            Destroy(gameObject);
         }
     }
 }

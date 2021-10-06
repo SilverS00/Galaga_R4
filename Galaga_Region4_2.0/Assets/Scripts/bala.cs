@@ -14,12 +14,12 @@ public class bala : MonoBehaviour
         rb2d.AddForce(transform.up * force, ForceMode2D.Impulse);
         Destroy(gameObject, 2);
     }
-
-    void OnCollisionEnter(Collision c)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (c.gameObject.tag == "enemy")
+        if (other.gameObject.CompareTag("enemy"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
+
 }
