@@ -72,6 +72,7 @@ public class Nave : MonoBehaviour
     {
         while (true)
         {
+            PlayAudio(0);
             GameObject firedBullet = Instantiate(bullet, referencia.position, referencia.rotation);
             yield return new WaitForSeconds(0.7f);
         }

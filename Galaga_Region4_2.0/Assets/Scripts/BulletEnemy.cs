@@ -16,7 +16,7 @@ public class BulletEnemy : MonoBehaviour
     }
   void OnCollisionEnter(Collision c)
     {
-        if(c.gameObject.CompareTag("Player"))
+        if(c.gameObject.CompareTag("Player") || c.gameObject.CompareTag("Wall"))
         {
             Destroy(c.gameObject);
         }
